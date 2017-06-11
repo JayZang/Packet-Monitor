@@ -1,0 +1,601 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<GeocodeResponse>
+ <status>OK</status>
+ <result>
+  <type>street_address</type>
+  <formatted_address>52 O'Connell Street Lower, North City, Dublin 1, D01 C2P1愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>52</long_name>
+   <short_name>52</short_name>
+   <type>street_number</type>
+  </address_component>
+  <address_component>
+   <long_name>O'Connell Street Lower</long_name>
+   <short_name>O'Connell Street Lower</short_name>
+   <type>route</type>
+  </address_component>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林</long_name>
+   <short_name>都柏林</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin 1</long_name>
+   <short_name>Dublin 1</short_name>
+   <type>postal_town</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>D01 C2P1</long_name>
+   <short_name>D01 C2P1</short_name>
+   <type>postal_code</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3477972</lat>
+    <lng>-6.2598419</lng>
+   </location>
+   <location_type>ROOFTOP</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3464482</lat>
+     <lng>-6.2611909</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3491462</lat>
+     <lng>-6.2584929</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <place_id>ChIJqz9x84QOZ0gRv_AGo71dUyE</place_id>
+ </result>
+ <result>
+  <type>bus_station</type>
+  <type>establishment</type>
+  <type>point_of_interest</type>
+  <type>transit_station</type>
+  <formatted_address>Clifton Court Hotel Eden Quay, North City, Dublin, Co. Dublin, 愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>Clifton Court Hotel Eden Quay</long_name>
+   <short_name>Clifton Court Hotel Eden Quay</short_name>
+   <type>bus_station</type>
+   <type>establishment</type>
+   <type>point_of_interest</type>
+   <type>transit_station</type>
+  </address_component>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin</long_name>
+   <short_name>Dublin</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3477993</lat>
+    <lng>-6.2584514</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3464503</lat>
+     <lng>-6.2598004</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3491483</lat>
+     <lng>-6.2571024</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <place_id>ChIJQVC7DoUOZ0gR9-ezwht-7DQ</place_id>
+ </result>
+ <result>
+  <type>neighborhood</type>
+  <type>political</type>
+  <formatted_address>North City, Dublin, 愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin</long_name>
+   <short_name>Dublin</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3495405</lat>
+    <lng>-6.2604787</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3455011</lat>
+     <lng>-6.2705761</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3529959</lat>
+     <lng>-6.2535138</lng>
+    </northeast>
+   </viewport>
+   <bounds>
+    <southwest>
+     <lat>53.3455011</lat>
+     <lng>-6.2705761</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3529959</lat>
+     <lng>-6.2535138</lng>
+    </northeast>
+   </bounds>
+  </geometry>
+  <place_id>ChIJkWD-iYMOZ0gRBL1eH8WGZ8I</place_id>
+ </result>
+ <result>
+  <type>locality</type>
+  <type>political</type>
+  <formatted_address>愛爾蘭都柏林</formatted_address>
+  <address_component>
+   <long_name>都柏林</long_name>
+   <short_name>都柏林</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林</long_name>
+   <short_name>都柏林</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3498053</lat>
+    <lng>-6.2603097</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.2234301</lat>
+     <lng>-6.4474847</lng>
+    </southwest>
+    <northeast>
+     <lat>53.4252101</lat>
+     <lng>-6.0439236</lng>
+    </northeast>
+   </viewport>
+   <bounds>
+    <southwest>
+     <lat>53.2234301</lat>
+     <lng>-6.4474847</lng>
+    </southwest>
+    <northeast>
+     <lat>53.4252101</lat>
+     <lng>-6.0439235</lng>
+    </northeast>
+   </bounds>
+  </geometry>
+  <place_id>ChIJL6wn6oAOZ0gRoHExl6nHAAo</place_id>
+ </result>
+ <result>
+  <type>postal_code</type>
+  <formatted_address>North City, 都柏林Co. 都柏林D01 C2P1愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>D01 C2P1</long_name>
+   <short_name>D01 C2P1</short_name>
+   <type>postal_code</type>
+  </address_component>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin</long_name>
+   <short_name>Dublin</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3477966</lat>
+    <lng>-6.2598466</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3464476</lat>
+     <lng>-6.2611956</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3491456</lat>
+     <lng>-6.2584976</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <place_id>ChIJZ4Cf84QOZ0gR76R91Vv79d0</place_id>
+ </result>
+ <result>
+  <type>postal_code</type>
+  <formatted_address>North City, 都柏林Co. 都柏林D01 KX94愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>D01 KX94</long_name>
+   <short_name>D01 KX94</short_name>
+   <type>postal_code</type>
+  </address_component>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin</long_name>
+   <short_name>Dublin</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3476983</lat>
+    <lng>-6.2597863</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3463493</lat>
+     <lng>-6.2611353</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3490473</lat>
+     <lng>-6.2584373</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <place_id>ChIJ-RJS8oQOZ0gRuRN5VirrhmY</place_id>
+ </result>
+ <result>
+  <type>postal_code</type>
+  <formatted_address>North City, 都柏林Co. 都柏林D01 YD70愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>D01 YD70</long_name>
+   <short_name>D01 YD70</short_name>
+   <type>postal_code</type>
+  </address_component>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin</long_name>
+   <short_name>Dublin</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3479131</lat>
+    <lng>-6.2598896</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3465641</lat>
+     <lng>-6.2612386</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3492621</lat>
+     <lng>-6.2585406</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <place_id>ChIJ-Y-H9IQOZ0gRFnpzvf4C7Jg</place_id>
+ </result>
+ <result>
+  <type>postal_code</type>
+  <formatted_address>North City, 都柏林Co. 都柏林D01 W2V3愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>D01 W2V3</long_name>
+   <short_name>D01 W2V3</short_name>
+   <type>postal_code</type>
+  </address_component>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin</long_name>
+   <short_name>Dublin</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3476374</lat>
+    <lng>-6.2597661</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3462884</lat>
+     <lng>-6.2611151</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3489864</lat>
+     <lng>-6.2584171</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <place_id>ChIJbclC8oQOZ0gR1P8ceFy67ZI</place_id>
+ </result>
+ <result>
+  <type>postal_code</type>
+  <formatted_address>North City, 都柏林Co. 都柏林D01 CK02愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>D01 CK02</long_name>
+   <short_name>D01 CK02</short_name>
+   <type>postal_code</type>
+  </address_component>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin</long_name>
+   <short_name>Dublin</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3479640</lat>
+    <lng>-6.2599241</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3466150</lat>
+     <lng>-6.2612731</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3493130</lat>
+     <lng>-6.2585751</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <place_id>ChIJo6j09IQOZ0gR0Xyyx2yh2rE</place_id>
+ </result>
+ <result>
+  <type>postal_code</type>
+  <formatted_address>North City, 都柏林Co. 都柏林D01 H314愛爾蘭</formatted_address>
+  <address_component>
+   <long_name>D01 H314</long_name>
+   <short_name>D01 H314</short_name>
+   <type>postal_code</type>
+  </address_component>
+  <address_component>
+   <long_name>North City</long_name>
+   <short_name>North City</short_name>
+   <type>neighborhood</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>Dublin</long_name>
+   <short_name>Dublin</short_name>
+   <type>locality</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>都柏林市</long_name>
+   <short_name>都柏林市</short_name>
+   <type>administrative_area_level_2</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>County Dublin</long_name>
+   <short_name>County Dublin</short_name>
+   <type>administrative_area_level_1</type>
+   <type>political</type>
+  </address_component>
+  <address_component>
+   <long_name>愛爾蘭</long_name>
+   <short_name>IE</short_name>
+   <type>country</type>
+   <type>political</type>
+  </address_component>
+  <geometry>
+   <location>
+    <lat>53.3475822</lat>
+    <lng>-6.2597319</lng>
+   </location>
+   <location_type>APPROXIMATE</location_type>
+   <viewport>
+    <southwest>
+     <lat>53.3462332</lat>
+     <lng>-6.2610809</lng>
+    </southwest>
+    <northeast>
+     <lat>53.3489312</lat>
+     <lng>-6.2583829</lng>
+    </northeast>
+   </viewport>
+  </geometry>
+  <place_id>ChIJ3Zpx8oQOZ0gRfDL_JaMm9Po</place_id>
+ </result>
+</GeocodeResponse>
