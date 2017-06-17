@@ -143,9 +143,10 @@ namespace PacketMonitor.SSL
                         foreach(var p in list[j].Ports)
                         {
                             if ((p.SrcPort == _ServerPort) && (p.DstPort == _UserPort))
+                            {
                                 port = p;
-
-                            break;
+                                break;
+                            }
                         }
                     }
                     else if((list[j].DstIP == _ServerIP) && (list[j].SrcIP == _UserIP))
@@ -153,9 +154,10 @@ namespace PacketMonitor.SSL
                         foreach (var p in list[j].Ports)
                         {
                             if ((p.SrcPort == _UserPort) && (p.DstPort == _ServerPort))
+                            {
                                 port = p;
-
-                            break;
+                                break;
+                            }       
                         }
                     }
                 }
@@ -173,8 +175,12 @@ namespace PacketMonitor.SSL
                         string pubkey = null;
                         if (SSLAnalyze.GetPubKeyLen() > 0)
                         {
-                            for (int i = 0; i < SSLAnalyze.GetPubKeyLen(); i++)
-                                pubkey += string.Format("{0:x2} ", SSLAnalyze.GetPubkey()[i]);
+                            if(SSLAnalyze.GetPubKeyLen() == SSLAnalyze.GetSessionKeyLen())
+                                for (int i = 0; i < SSLAnalyze.GetPubKeyLen(); i++)
+                                    pubkey += string.Format("{0:x2} ", SSLAnalyze.GetPubkey()[i]);
+                            else
+                                for (int i = 0; i < SSLAnalyze.GetSessionKeyLen(); i++)
+                                    pubkey += string.Format("{0:x2} ", SSLAnalyze.GetPubkey()[i+6]);
                         }
                         _SSLInformation.PubKey = pubkey;
 
@@ -224,8 +230,12 @@ namespace PacketMonitor.SSL
                 string _pubkey = null;
                 if (SSLAnalyze.GetPubKeyLen() > 0)
                 {
-                    for (int i = 0; i < SSLAnalyze.GetPubKeyLen(); i++)
-                        _pubkey += string.Format("{0:x2} ", SSLAnalyze.GetPubkey()[i]);
+                    if (SSLAnalyze.GetPubKeyLen() == SSLAnalyze.GetSessionKeyLen())
+                        for (int i = 0; i < SSLAnalyze.GetPubKeyLen(); i++)
+                            _pubkey += string.Format("{0:x2} ", SSLAnalyze.GetPubkey()[i]);
+                    else
+                        for (int i = 0; i < SSLAnalyze.GetSessionKeyLen(); i++)
+                            _pubkey += string.Format("{0:x2} ", SSLAnalyze.GetPubkey()[i + 6]);
                 }
                 sslInformation.PubKey = _pubkey;
 
