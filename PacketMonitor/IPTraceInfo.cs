@@ -36,8 +36,10 @@ namespace PacketMonitor.IPTraceInfomation
             DstPort = _DstPort;
             hasSSL = false;
             SSLPcapFileWriter = null;
+            keys = new Keys();
+            keys.hasKey = false;
 
-            if(int.Parse(_SrcPort) < 1000)
+            if (int.Parse(_SrcPort) < 1000)
             {
                 PortApplication = PortsApplication[int.Parse(_SrcPort)];
             }
@@ -50,6 +52,7 @@ namespace PacketMonitor.IPTraceInfomation
         public string SrcPort { get; set; }
         public string DstPort { get; set; }
         public bool hasSSL { get; set; }
+        public Keys keys { get; set; }
         public PcapFileWriter SSLPcapFileWriter { get; set; }
         public string PortApplication { get; set; }
 
@@ -68,6 +71,16 @@ namespace PacketMonitor.IPTraceInfomation
 
 
         public static Dictionary<int, string> PortsApplication = new Dictionary<int, string>();
+    }
+
+    public class Keys
+    {
+        public bool hasKey { get; set; }
+        public string ServerPort { get; set; }
+        public string UserPort { get; set; }
+        public string pubKey { get; set; }
+        public string sessionKey { get; set; }
+        public string newSessionkey { get; set; }
     }
 
     public class PcapFileWriter

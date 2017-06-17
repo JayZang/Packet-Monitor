@@ -55,7 +55,7 @@ namespace PacketMonitor.SSL
         
             if ( SSLAnalyze.GetHandShakeMainContent() )
             {             
-                var _SSLInformation = AddToSSLInfo(null);
+                var _SSLInformation = AddToSSLInfo(Form,null);
                 WriteToDB(_SSLInformation);
                 
             }
@@ -63,7 +63,7 @@ namespace PacketMonitor.SSL
             var _Certificate = _CertificateManage.Trace(packet);
             if ( _Certificate != null )
             {
-                AddToSSLInfo(_Certificate);
+                AddToSSLInfo(Form, _Certificate);
                 DoSomething(Form, _Certificate);
             }        
         }
@@ -113,8 +113,11 @@ namespace PacketMonitor.SSL
         }
         
         //結合 Key 和 Certificate 之資訊緩存 
-        private unsafe SSLInformation AddToSSLInfo(Certificate _Certificate)
+        private unsafe SSLInformation AddToSSLInfo(PacketMonitorForm form, Certificate _Certificate)
         {
+            List<IPTraceInfo> list = form.listIPTrace;
+            Port port = null;
+
             // 當有 Certificate 時代表有建立了 SSL 連線對談，但尚未取得完整鑰匙資訊，因此先放入列表中等待資訊完整放入
             if (_Certificate != null)
             {
@@ -132,6 +135,30 @@ namespace PacketMonitor.SSL
                 string _ServerIP = string.Format("{0}.{1}.{2}.{3}", SSLAnalyze.GetServerIP()[3], SSLAnalyze.GetServerIP()[2], SSLAnalyze.GetServerIP()[1], SSLAnalyze.GetServerIP()[0]);
                 string _UserPort = SSLAnalyze.GetUserPort().ToString();
                 string _ServerPort = SSLAnalyze.GetServerPort().ToString();
+
+                for (int j = 0; j < list.Count; j++)
+                {
+                    if ((list[j].SrcIP == _ServerIP) && (list[j].DstIP == _UserIP) )
+                    {
+                        foreach(var p in list[j].Ports)
+                        {
+                            if ((p.SrcPort == _ServerPort) && (p.DstPort == _UserPort))
+                                port = p;
+
+                            break;
+                        }
+                    }
+                    else if((list[j].DstIP == _ServerIP) && (list[j].SrcIP == _UserIP))
+                    {
+                        foreach (var p in list[j].Ports)
+                        {
+                            if ((p.SrcPort == _UserPort) && (p.DstPort == _ServerPort))
+                                port = p;
+
+                            break;
+                        }
+                    }
+                }
 
                 foreach (var _SSLInformation in SSLInformationList)
                 {
@@ -166,6 +193,19 @@ namespace PacketMonitor.SSL
                                 NewSessionkey += string.Format("{0:x2} ", SSLAnalyze.GetNewSessionTicket()[i]);
                         }
                         _SSLInformation.NewSessionKey = NewSessionkey;
+
+                        if(port !=null && (pubkey != null || sessionkey != null || NewSessionkey != null))
+                        {
+                            port.keys.ServerPort = _ServerPort;
+                            port.keys.UserPort = _UserPort;
+                            if (port.keys.pubKey == null)
+                                port.keys.pubKey = pubkey;
+                            if (port.keys.sessionKey == null)
+                                port.keys.sessionKey = sessionkey;
+                            if (port.keys.newSessionkey == null)
+                                port.keys.newSessionkey = NewSessionkey;
+                            port.keys.hasKey = true;
+                        }
 
                         SSLInformationList.Remove(_SSLInformation);
                         return _SSLInformation;
@@ -207,6 +247,18 @@ namespace PacketMonitor.SSL
 
                 sslInformation.certificate = null;
 
+                if (port != null && (_pubkey != null || _sessionkey != null || _NewSessionkey != null))
+                {
+                    port.keys.ServerPort = _ServerPort;
+                    port.keys.UserPort = _UserPort;
+                    if (port.keys.pubKey == null)
+                        port.keys.pubKey = _pubkey;
+                    if (port.keys.sessionKey == null)
+                        port.keys.sessionKey = _sessionkey;
+                    if (port.keys.newSessionkey == null)
+                        port.keys.newSessionkey = _NewSessionkey;
+                    port.keys.hasKey = true;
+                }
                 return sslInformation;
             }
 

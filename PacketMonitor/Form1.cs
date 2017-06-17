@@ -646,7 +646,7 @@ namespace PacketMonitor
 
                         if (listIPTrace[i].certificate == null)
                             mPacketTrace.Items[listIPTrace[i].No.ToString()].SubItems.Add("");
-                        else if (listIPTrace[i].certificate != null)
+                        else if (listIPTrace[i].certificate != null )
                             mPacketTrace.Items[listIPTrace[i].No.ToString()].SubItems.Add("      ✔");
 
                         mPacketTrace.Items[listIPTrace[i].No.ToString()].SubItems.Add(listIPTrace[i].Information);
@@ -814,6 +814,22 @@ namespace PacketMonitor
                         Information += "   、  " + IP.certificate.CommonName[i];
                     }
                     Information += "\r\n\r\n";
+                }
+
+                Information += "SSL Key :\r\n";
+                foreach (var port in IP.Ports)
+                {
+                    if (port.keys.hasKey)
+                    {
+                        Information += "  Server Port : " + port.keys.ServerPort + " , User Port : " + port.keys.UserPort + " : \r\n";
+                        if (port.keys.pubKey != null)
+                            Information += "    PubKey(" + port.keys.pubKey.Length/3 + ") : " + port.keys.pubKey + "\r\n\r\n";
+                        if (port.keys.sessionKey != null)
+                            Information += "    SessionKey(" + port.keys.sessionKey.Length/3 + ") : " + port.keys.sessionKey + "\r\n\r\n";
+                        if (port.keys.newSessionkey != null)
+                            Information += "    NewSessionkey(" + port.keys.newSessionkey.Length/3 + ") : " + port.keys.newSessionkey + "\r\n\r\n";
+                        Information += "\r\n";
+                    }
                 }
 
                 mTxtCettificateContent.Text = Information;
