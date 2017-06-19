@@ -1,0 +1,27 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ConsoleApplication1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  stdafx.cpp
+  dllmain.cpp
+  DLLManage.cpp
+c:\users\a_jay\desktop\packetmonitor共同開發 v2\packetmonitor共同開發\packetmonitor\ssl key dll\SSLAnalyze.h(117): warning C4251: 'SSLAnalyze::HandShakeLayer': class 'HandShakeLayerAndChangeCipherSpecLayer' 必須有 DLL 介面，才能被為 class 'SSLAnalyze' 的用戶端使用
+  c:\users\a_jay\desktop\packetmonitor共同開發 v2\packetmonitor共同開發\packetmonitor\ssl key dll\SSLAnalyze.h(78): note: 請參閱 'HandShakeLayerAndChangeCipherSpecLayer' 的宣告
+  SSLAnalyze.cpp
+c:\users\a_jay\desktop\packetmonitor共同開發 v2\packetmonitor共同開發\packetmonitor\ssl key dll\SSLAnalyze.h(117): warning C4251: 'SSLAnalyze::HandShakeLayer': class 'HandShakeLayerAndChangeCipherSpecLayer' 必須有 DLL 介面，才能被為 class 'SSLAnalyze' 的用戶端使用
+  c:\users\a_jay\desktop\packetmonitor共同開發 v2\packetmonitor共同開發\packetmonitor\ssl key dll\SSLAnalyze.h(78): note: 請參閱 'HandShakeLayerAndChangeCipherSpecLayer' 的宣告
+SSLAnalyze.cpp(201): warning C4018: '>': signed/unsigned 不相符
+SSLAnalyze.cpp(211): warning C4018: '<': signed/unsigned 不相符
+SSLAnalyze.cpp(218): warning C4018: '<': signed/unsigned 不相符
+SSLAnalyze.cpp(224): warning C4018: '<': signed/unsigned 不相符
+SSLAnalyze.cpp(232): warning C4018: '>': signed/unsigned 不相符
+SSLAnalyze.cpp(793): warning C4244: '=': 將 'u_long' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+SSLAnalyze.cpp(794): warning C4244: '=': 將 'u_long' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+SSLAnalyze.cpp(795): warning C4244: '=': 將 'u_long' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+SSLAnalyze.cpp(796): warning C4244: '=': 將 'u_long' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+SSLAnalyze.cpp(798): warning C4244: '=': 將 'u_long' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+SSLAnalyze.cpp(799): warning C4244: '=': 將 'u_long' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+SSLAnalyze.cpp(800): warning C4244: '=': 將 'u_long' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+SSLAnalyze.cpp(801): warning C4244: '=': 將 'u_long' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+  正在產生程式碼...
+  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+     正在建立程式庫 C:\Users\A_Jay\Desktop\PacketMonitor共同開發 V2\PacketMonitor共同開發\PacketMonitor\Debug\SSLAnalyzer.lib 和物件 C:\Users\A_Jay\Desktop\PacketMonitor共同開發 V2\PacketMonitor共同開發\PacketMonitor\Debug\SSLAnalyzer.exp
+  ConsoleApplication1.vcxproj -> C:\Users\A_Jay\Desktop\PacketMonitor共同開發 V2\PacketMonitor共同開發\PacketMonitor\Debug\SSLAnalyzer.dll
+  ConsoleApplication1.vcxproj -> C:\Users\A_Jay\Desktop\PacketMonitor共同開發 V2\PacketMonitor共同開發\PacketMonitor\Debug\SSLAnalyzer.pdb (Full PDB)
