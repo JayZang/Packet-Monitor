@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using System.Windows;
+using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 
@@ -23,25 +23,38 @@ namespace ReadPcapFile
 
     unsafe class ReadPacpFile
     {
-        public ReadPacpFile()
+        public ReadPacpFile(ProgressBar e)
         {
+            progressBar = e;
+            files = new List<byte[]>();
             mThread = new Thread(WorkOnThread);
         }
 
-        public bool OpenFile(string FilePath)
+        public bool OpenFile(List<string> FilePaths)
         {
             try
             {
-                fs = new FileStream(FilePath, FileMode.Open, FileAccess.ReadWrite);  // open file
-                br = new BinaryReader(fs);                                           // file reader
+                int totalBytes = 0;
+
+                foreach(string filePath in FilePaths)
+                {
+                    fs = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite);  // open file
+                    br = new BinaryReader(fs);                                           // file reader
+
+                    byte[] fileBytes = br.ReadBytes((int)fs.Length);
+                    totalBytes += fileBytes.Length;
+                    files.Add(fileBytes);
+                }
+
+                progressBar.Maximum = totalBytes;
+                progressBar.Value = 0;
+                progressBar.Step = 1;
             }
             catch
             {
+                files.Clear();
                 return false;
             }          
-            
-            ALLdata = br.ReadBytes((int)fs.Length);
-            PacketData = ALLdata;
             return true;       
         }
 
@@ -52,67 +65,79 @@ namespace ReadPcapFile
 
         private void WorkOnThread()
         {
-            if (ALLdata[0] == 0x0a && ALLdata[1] == 0x0d && ALLdata[2] == 0x0d && ALLdata[3] == 0x0a)  // pcapng
+            foreach (var file in files)
             {
-                ByteIndex = ALLdata[4];
-                ByteIndex = ByteIndex + ALLdata[ByteIndex + 4];
-                fixed (byte* buf = PacketData)
-                {
-                    PcapngPacketHeader = buf + ByteIndex;
-                    _Byte = PcapngPacketHeader + PcapngPacketHeaderLen;
-                }
-                int packetLen = 0;
-                while (ByteIndex < ALLdata.Length)
-                {
-                    packetLen = PcapngPacketHeader[21] * 256 + PcapngPacketHeader[20];
-                    PacketData = new byte[packetLen];
-                    for (int i = 0; i < packetLen; i++)
-                    {
-                        PacketData[i] = _Byte[i];
-                    }
+                ALLdata = file;
+                PacketData = ALLdata;
 
-                    if (PackerHandler != null)
+                if (ALLdata[0] == 0x0a && ALLdata[1] == 0x0d && ALLdata[2] == 0x0d && ALLdata[3] == 0x0a)  // pcapng
+                {
+                    ByteIndex = ALLdata[4];
+                    ByteIndex = ByteIndex + ALLdata[ByteIndex + 4];
+                    fixed (byte* buf = PacketData)
                     {
-                        PackerHandler(PacketData, false);
+                        PcapngPacketHeader = buf + ByteIndex;
+                        _Byte = PcapngPacketHeader + PcapngPacketHeaderLen;
                     }
+                    int packetLen = 0;
+                    while (ByteIndex < ALLdata.Length)
+                    {
+                        packetLen = PcapngPacketHeader[21] * 256 + PcapngPacketHeader[20];
+                        PacketData = new byte[packetLen];
+                        for (int i = 0; i < packetLen; i++)
+                        {
+                            PacketData[i] = _Byte[i];
+                        }
 
-                    ByteIndex += PcapngPacketHeader[5]*256 + PcapngPacketHeader[4];
-                    PcapngPacketHeader = PcapngPacketHeader + PcapngPacketHeader[5] * 256 + PcapngPacketHeader[4];
-                    _Byte = PcapngPacketHeader + PcapngPacketHeaderLen;
+                        if (PackerHandler != null)
+                        {
+                            PackerHandler(PacketData, false);
+                        }
+
+                        ByteIndex += PcapngPacketHeader[5] * 256 + PcapngPacketHeader[4];
+                        PcapngPacketHeader = PcapngPacketHeader + PcapngPacketHeader[5] * 256 + PcapngPacketHeader[4];
+                        _Byte = PcapngPacketHeader + PcapngPacketHeaderLen;
+                    }
+                    //PackerHandler(PacketData, true);
                 }
-                PackerHandler(PacketData, true);
+                else // pcap
+                {
+                    ByteIndex = PcapFileHeaderLen;
+                    fixed (byte* buf = PacketData)
+                    {
+                        _PcapPacketHeader = (PcapPacketHeader*)(buf + PcapFileHeaderLen);
+                        _Byte = (byte*)((byte*)_PcapPacketHeader + sizeof(PcapPacketHeader));
+                    }
+                    while (ByteIndex < ALLdata.Length)
+                    {
+                        PacketData = new byte[_PcapPacketHeader->Len];
+                        for (int i = 0; i < _PcapPacketHeader->Len; i++)
+                        {
+                            PacketData[i] = _Byte[i];
+                        }
+
+                        if (PackerHandler != null)
+                        {
+                            PackerHandler(PacketData, false);
+                        }
+
+                        ByteIndex += _PcapPacketHeader->Len + sizeof(PcapPacketHeader);
+                        _PcapPacketHeader = (PcapPacketHeader*)(_Byte + _PcapPacketHeader->Len);
+                        _Byte = (byte*)((byte*)_PcapPacketHeader + sizeof(PcapPacketHeader));
+                    }                   
+                    //PackerHandler(PacketData, true);
+                }
+                
             }
-            else // pcap
-            {
-                ByteIndex = PcapFileHeaderLen;
-                fixed (byte* buf = PacketData)
-                {
-                    _PcapPacketHeader = (PcapPacketHeader*)(buf + PcapFileHeaderLen);
-                    _Byte = (byte*)((byte*)_PcapPacketHeader + sizeof(PcapPacketHeader));
-                }
-                while (ByteIndex < ALLdata.Length)
-                {
-                    PacketData = new byte[_PcapPacketHeader->Len];
-                    for (int i = 0; i < _PcapPacketHeader->Len; i++)
-                    {
-                        PacketData[i] = _Byte[i];
-                    }
 
-                    if (PackerHandler != null)
-                    {
-                        PackerHandler(PacketData, false);
-                    }
-
-                    ByteIndex += _PcapPacketHeader->Len + sizeof(PcapPacketHeader);
-                    _PcapPacketHeader = (PcapPacketHeader*)(_Byte + _PcapPacketHeader->Len);
-                    _Byte = (byte*)((byte*)_PcapPacketHeader + sizeof(PcapPacketHeader));
-                }
-                PackerHandler(PacketData, true);
-            }
+            files.Clear();
+            PackerHandler(PacketData, true);  // 表明結束
         }
 
         public PackerHandler PackerHandler = null;
 
+        private ProgressBar progressBar;
+        private List<byte[]> files;
         private FileStream fs;
         private BinaryReader br;
         PcapPacketHeader* _PcapPacketHeader;

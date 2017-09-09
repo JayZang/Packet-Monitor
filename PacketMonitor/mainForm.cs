@@ -20,17 +20,31 @@ namespace PacketMonitor
         private void button1_Click(object sender, EventArgs e)
         {
             packetMonitorForm = new PacketMonitorForm(Mode.Monitor);
-            this.Visible = false;
-            packetMonitorForm.ShowDialog();
-            this.Visible = true;
+            if (packetMonitorForm.isWorking())
+            {
+                this.Visible = false;
+                packetMonitorForm.ShowDialog();
+                this.Visible = true;
+            }
+            else
+            {
+                packetMonitorForm.closeForm();
+            }       
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             packetMonitorForm = new PacketMonitorForm(Mode.File);
-            this.Visible = false;
-            packetMonitorForm.ShowDialog();
-            this.Visible = true;
+            if (packetMonitorForm.isWorking())
+            {
+                this.Visible = false;
+                packetMonitorForm.ShowDialog();
+                this.Visible = true;
+            }
+            else
+            {
+                packetMonitorForm.closeForm();
+            }
         }
     }
 }

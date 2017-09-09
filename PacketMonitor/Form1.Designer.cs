@@ -54,18 +54,19 @@ namespace PacketMonitor
             this.mStatusLastPacketTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.mToolStrip_Monitor = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.mBtnSelectInterface = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.mBtnStartMonitor = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mBtnStopMonitor = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mBtnOpenFolder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.mPanelIpInfo = new System.Windows.Forms.Panel();
             this.mTxtCettificateContent = new System.Windows.Forms.TextBox();
             this.mSplitterPage1 = new System.Windows.Forms.Splitter();
             this.mPanelIpTrace = new System.Windows.Forms.Panel();
-            this.mBtnSelectInterface = new System.Windows.Forms.ToolStripButton();
-            this.mBtnStartMonitor = new System.Windows.Forms.ToolStripButton();
-            this.mBtnStopMonitor = new System.Windows.Forms.ToolStripButton();
-            this.mBtnOpenFolder = new System.Windows.Forms.ToolStripButton();
+            this.mReadFileProgressBar = new System.Windows.Forms.ProgressBar();
             this.mPacketTrace = new PacketMonitor.NewListView();
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -92,37 +93,37 @@ namespace PacketMonitor
             this.mStatusCommuncations,
             this.mStatusStreams,
             this.mStatusLastPacketTime});
-            this.mStatusStrip_Monitor.Location = new System.Drawing.Point(0, 730);
+            this.mStatusStrip_Monitor.Location = new System.Drawing.Point(0, 584);
             this.mStatusStrip_Monitor.Name = "mStatusStrip_Monitor";
-            this.mStatusStrip_Monitor.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
-            this.mStatusStrip_Monitor.Size = new System.Drawing.Size(1468, 25);
+            this.mStatusStrip_Monitor.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.mStatusStrip_Monitor.Size = new System.Drawing.Size(1101, 20);
             this.mStatusStrip_Monitor.TabIndex = 10;
             // 
             // mStatusMonitor
             // 
             this.mStatusMonitor.Name = "mStatusMonitor";
-            this.mStatusMonitor.Size = new System.Drawing.Size(121, 20);
+            this.mStatusMonitor.Size = new System.Drawing.Size(97, 15);
             this.mStatusMonitor.Text = "Status : None     ";
             this.mStatusMonitor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // mStatusCommuncations
             // 
             this.mStatusCommuncations.Name = "mStatusCommuncations";
-            this.mStatusCommuncations.Size = new System.Drawing.Size(135, 20);
+            this.mStatusCommuncations.Size = new System.Drawing.Size(108, 15);
             this.mStatusCommuncations.Text = "Connections : 0     ";
             this.mStatusCommuncations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // mStatusStreams
             // 
             this.mStatusStreams.Name = "mStatusStreams";
-            this.mStatusStreams.Size = new System.Drawing.Size(184, 20);
+            this.mStatusStreams.Size = new System.Drawing.Size(147, 15);
             this.mStatusStreams.Text = "Total Streams(Byte) : 0     ";
             this.mStatusStreams.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // mStatusLastPacketTime
             // 
             this.mStatusLastPacketTime.Name = "mStatusLastPacketTime";
-            this.mStatusLastPacketTime.Size = new System.Drawing.Size(247, 20);
+            this.mStatusLastPacketTime.Size = new System.Drawing.Size(197, 15);
             this.mStatusLastPacketTime.Text = "Last Packet Arrival Time :  None     ";
             // 
             // mToolStrip_Monitor
@@ -143,78 +144,14 @@ namespace PacketMonitor
             this.toolStripSeparator8});
             this.mToolStrip_Monitor.Location = new System.Drawing.Point(0, 0);
             this.mToolStrip_Monitor.Name = "mToolStrip_Monitor";
-            this.mToolStrip_Monitor.Size = new System.Drawing.Size(1468, 40);
+            this.mToolStrip_Monitor.Size = new System.Drawing.Size(1101, 32);
             this.mToolStrip_Monitor.TabIndex = 12;
             this.mToolStrip_Monitor.Text = "toolStrip1";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 40);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 40);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 40);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 40);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 40);
-            // 
-            // mPanelIpInfo
-            // 
-            this.mPanelIpInfo.Controls.Add(this.mTxtCettificateContent);
-            this.mPanelIpInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.mPanelIpInfo.Location = new System.Drawing.Point(0, 558);
-            this.mPanelIpInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mPanelIpInfo.Name = "mPanelIpInfo";
-            this.mPanelIpInfo.Size = new System.Drawing.Size(1468, 172);
-            this.mPanelIpInfo.TabIndex = 17;
-            // 
-            // mTxtCettificateContent
-            // 
-            this.mTxtCettificateContent.BackColor = System.Drawing.Color.White;
-            this.mTxtCettificateContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mTxtCettificateContent.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.mTxtCettificateContent.Location = new System.Drawing.Point(0, 0);
-            this.mTxtCettificateContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mTxtCettificateContent.Multiline = true;
-            this.mTxtCettificateContent.Name = "mTxtCettificateContent";
-            this.mTxtCettificateContent.ReadOnly = true;
-            this.mTxtCettificateContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.mTxtCettificateContent.Size = new System.Drawing.Size(1468, 172);
-            this.mTxtCettificateContent.TabIndex = 11;
-            // 
-            // mSplitterPage1
-            // 
-            this.mSplitterPage1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.mSplitterPage1.Location = new System.Drawing.Point(0, 556);
-            this.mSplitterPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mSplitterPage1.Name = "mSplitterPage1";
-            this.mSplitterPage1.Size = new System.Drawing.Size(1468, 2);
-            this.mSplitterPage1.TabIndex = 18;
-            this.mSplitterPage1.TabStop = false;
-            // 
-            // mPanelIpTrace
-            // 
-            this.mPanelIpTrace.Controls.Add(this.mPacketTrace);
-            this.mPanelIpTrace.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mPanelIpTrace.Location = new System.Drawing.Point(0, 40);
-            this.mPanelIpTrace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.mPanelIpTrace.Name = "mPanelIpTrace";
-            this.mPanelIpTrace.Size = new System.Drawing.Size(1468, 516);
-            this.mPanelIpTrace.TabIndex = 19;
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 32);
             // 
             // mBtnSelectInterface
             // 
@@ -223,9 +160,14 @@ namespace PacketMonitor
             this.mBtnSelectInterface.Image = global::PacketMonitor.Properties.Resources.computer_setting;
             this.mBtnSelectInterface.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mBtnSelectInterface.Name = "mBtnSelectInterface";
-            this.mBtnSelectInterface.Size = new System.Drawing.Size(24, 37);
+            this.mBtnSelectInterface.Size = new System.Drawing.Size(24, 29);
             this.mBtnSelectInterface.Text = "Select Interface";
             this.mBtnSelectInterface.Click += new System.EventHandler(this.mBtnSelectInterface_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 32);
             // 
             // mBtnStartMonitor
             // 
@@ -233,10 +175,15 @@ namespace PacketMonitor
             this.mBtnStartMonitor.Image = global::PacketMonitor.Properties.Resources._1495655970_Play01;
             this.mBtnStartMonitor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mBtnStartMonitor.Name = "mBtnStartMonitor";
-            this.mBtnStartMonitor.Size = new System.Drawing.Size(24, 37);
+            this.mBtnStartMonitor.Size = new System.Drawing.Size(24, 29);
             this.mBtnStartMonitor.Text = "Start";
             this.mBtnStartMonitor.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.mBtnStartMonitor.Click += new System.EventHandler(this.mBtnStartMonitor_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
             // mBtnStopMonitor
             // 
@@ -244,9 +191,14 @@ namespace PacketMonitor
             this.mBtnStopMonitor.Image = global::PacketMonitor.Properties.Resources.stop;
             this.mBtnStopMonitor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mBtnStopMonitor.Name = "mBtnStopMonitor";
-            this.mBtnStopMonitor.Size = new System.Drawing.Size(24, 37);
+            this.mBtnStopMonitor.Size = new System.Drawing.Size(24, 29);
             this.mBtnStopMonitor.Text = "  Stop  ";
             this.mBtnStopMonitor.Click += new System.EventHandler(this.mBtnStopMonitor_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
             // 
             // mBtnOpenFolder
             // 
@@ -254,9 +206,67 @@ namespace PacketMonitor
             this.mBtnOpenFolder.Image = global::PacketMonitor.Properties.Resources.open_folder;
             this.mBtnOpenFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.mBtnOpenFolder.Name = "mBtnOpenFolder";
-            this.mBtnOpenFolder.Size = new System.Drawing.Size(24, 37);
+            this.mBtnOpenFolder.Size = new System.Drawing.Size(24, 29);
             this.mBtnOpenFolder.Text = "Open Folder";
             this.mBtnOpenFolder.Click += new System.EventHandler(this.mBtnOpenFolder_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 32);
+            // 
+            // mPanelIpInfo
+            // 
+            this.mPanelIpInfo.Controls.Add(this.mTxtCettificateContent);
+            this.mPanelIpInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.mPanelIpInfo.Location = new System.Drawing.Point(0, 446);
+            this.mPanelIpInfo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mPanelIpInfo.Name = "mPanelIpInfo";
+            this.mPanelIpInfo.Size = new System.Drawing.Size(1101, 138);
+            this.mPanelIpInfo.TabIndex = 17;
+            // 
+            // mTxtCettificateContent
+            // 
+            this.mTxtCettificateContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.mTxtCettificateContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mTxtCettificateContent.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.mTxtCettificateContent.Location = new System.Drawing.Point(0, 0);
+            this.mTxtCettificateContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mTxtCettificateContent.Multiline = true;
+            this.mTxtCettificateContent.Name = "mTxtCettificateContent";
+            this.mTxtCettificateContent.ReadOnly = true;
+            this.mTxtCettificateContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.mTxtCettificateContent.Size = new System.Drawing.Size(1101, 138);
+            this.mTxtCettificateContent.TabIndex = 11;
+            // 
+            // mSplitterPage1
+            // 
+            this.mSplitterPage1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.mSplitterPage1.Location = new System.Drawing.Point(0, 444);
+            this.mSplitterPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mSplitterPage1.Name = "mSplitterPage1";
+            this.mSplitterPage1.Size = new System.Drawing.Size(1101, 2);
+            this.mSplitterPage1.TabIndex = 18;
+            this.mSplitterPage1.TabStop = false;
+            // 
+            // mPanelIpTrace
+            // 
+            this.mPanelIpTrace.Controls.Add(this.mPacketTrace);
+            this.mPanelIpTrace.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mPanelIpTrace.Location = new System.Drawing.Point(0, 32);
+            this.mPanelIpTrace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mPanelIpTrace.Name = "mPanelIpTrace";
+            this.mPanelIpTrace.Size = new System.Drawing.Size(1101, 412);
+            this.mPanelIpTrace.TabIndex = 19;
+            // 
+            // mReadFileProgressBar
+            // 
+            this.mReadFileProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mReadFileProgressBar.Location = new System.Drawing.Point(934, 586);
+            this.mReadFileProgressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mReadFileProgressBar.Name = "mReadFileProgressBar";
+            this.mReadFileProgressBar.Size = new System.Drawing.Size(150, 16);
+            this.mReadFileProgressBar.TabIndex = 20;
             // 
             // mPacketTrace
             // 
@@ -277,10 +287,10 @@ namespace PacketMonitor
             this.mPacketTrace.GridLines = true;
             this.mPacketTrace.HideSelection = false;
             this.mPacketTrace.Location = new System.Drawing.Point(0, 0);
-            this.mPacketTrace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mPacketTrace.Margin = new System.Windows.Forms.Padding(2);
             this.mPacketTrace.MultiSelect = false;
             this.mPacketTrace.Name = "mPacketTrace";
-            this.mPacketTrace.Size = new System.Drawing.Size(1468, 516);
+            this.mPacketTrace.Size = new System.Drawing.Size(1101, 412);
             this.mPacketTrace.TabIndex = 6;
             this.mPacketTrace.UseCompatibleStateImageBehavior = false;
             this.mPacketTrace.View = System.Windows.Forms.View.Details;
@@ -334,17 +344,18 @@ namespace PacketMonitor
             // 
             // PacketMonitorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1468, 755);
+            this.ClientSize = new System.Drawing.Size(1101, 604);
+            this.Controls.Add(this.mReadFileProgressBar);
             this.Controls.Add(this.mPanelIpTrace);
             this.Controls.Add(this.mSplitterPage1);
             this.Controls.Add(this.mPanelIpInfo);
             this.Controls.Add(this.mToolStrip_Monitor);
             this.Controls.Add(this.mStatusStrip_Monitor);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PacketMonitorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Packets Monitor";
@@ -428,6 +439,7 @@ namespace PacketMonitor
         private System.Windows.Forms.ToolStripStatusLabel mStatusCommuncations;
         private System.Windows.Forms.ToolStripStatusLabel mStatusStreams;
         private System.Windows.Forms.ToolStripStatusLabel mStatusLastPacketTime;
+        private System.Windows.Forms.ProgressBar mReadFileProgressBar;
     }
 
     public enum Mode

@@ -44,6 +44,7 @@ namespace PacketMonitor
 
             if(mode == Mode.Monitor)
             {
+                mReadFileProgressBar.Visible = false;
                 mBtnSelectInterface_Click(null,null);
             }
             else if(mode == Mode.File)
@@ -52,6 +53,8 @@ namespace PacketMonitor
                 this.mBtnSelectInterface.Click -= new System.EventHandler(this.mBtnSelectInterface_Click);
                 this.mBtnSelectInterface.Click += new System.EventHandler(this.mBtnSelectPacketFile_Click);
                 this.mBtnSelectInterface.Image = global::PacketMonitor.Properties.Resources.file;
+                this.mBtnStartMonitor.Visible = false;
+                this.toolStripSeparator4.Visible = false;
                 mBtnSelectPacketFile_Click(null,null);
             }               
         }
@@ -60,6 +63,21 @@ namespace PacketMonitor
         private void InitialCommom()
         {
             Port.Initial_PortsApplication();
+        }
+
+        // 用來得知目前是否正在運行中
+        public bool isWorking()
+        {
+            if (Status == EnumStatus.Idle)
+                return false;
+            return true;
+        }
+
+        // 關閉目前表單
+        public void closeForm()
+        {
+            this.OnFormClosing(null);
+            this.Close();
         }
 
         /*****************************************  For Page 1  *****************************************/
@@ -179,22 +197,30 @@ namespace PacketMonitor
         private void mBtnSelectPacketFile_Click(object sender, EventArgs e)
         {
             mOpenFileDialog.Title = "Select file";
+            mOpenFileDialog.Multiselect = true;
+            mOpenFileDialog.Filter = "Pcap files (*.pcap)|*.pcap|Pcapng files (*.pcapng)|*.pcapng";
             mOpenFileDialog.InitialDirectory = Directory.GetCurrentDirectory() + "//" + FileStoragePath.GetPath_MainFolder() + "//";
             //mOpenFileDialog.Filter = "Pcap |*.pcap | Pcapng |*.pcapng";
-            ReadPacpFile PacketFileReader = new ReadPacpFile();
+            ReadPacpFile PacketFileReader = new ReadPacpFile(mReadFileProgressBar);
             if (mOpenFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (!PacketFileReader.OpenFile(mOpenFileDialog.FileName))
+                List<string> fileNames = new List<string>();
+                foreach(string filename in mOpenFileDialog.FileNames)
+                {
+                    fileNames.Add(filename);
+                }
+                if (!PacketFileReader.OpenFile(fileNames))
                 {
                     MessageBox.Show("Open File Fail");
                     return;
-                }
+                }                
             }
             else
             {
                 return;
             }
 
+            
             PacketFileReader.PackerHandler = new PackerHandler(ReadPacketFileHandler);
             mPacketTrace.Items.Clear();
             SIPTrace = new SIPTRACE();
@@ -213,7 +239,7 @@ namespace PacketMonitor
             SipThread.Start();
             TotalPacketStream = 0;
             mStatusStreams.Text = "Total Streams(Byte) : 0     ";
-            this.Text = "Packets Monitor ( Open File from " + mOpenFileDialog.FileName + " )";
+            this.Text = "Packets Monitor ( Open File )";
             mStatusMonitor.Text = "Status : Open File...     ";
         }
 
@@ -252,7 +278,10 @@ namespace PacketMonitor
         // 只在讀檔中用到
         private void SipProcess()
         {
-            SIPTrace.PacketFileRTP(new StringBuilder(mOpenFileDialog.FileName), new StringBuilder(FileStoragePath.GetPath_SIP()));
+            foreach(string file in mOpenFileDialog.FileNames)
+            {
+                SIPTrace.PacketFileRTP(new StringBuilder(file), new StringBuilder(FileStoragePath.GetPath_SIP()));
+            }         
         }
 
         // Received pakcets will be push into queue. ( This is a callback function.)
@@ -358,6 +387,7 @@ namespace PacketMonitor
                 //    tmpMs.Dispose();
                 //}
 
+
                 // SIP、RTP Packet Analyze and handle them
                 if (Status == EnumStatus.Monitor)
                     SIPTrace.Handler(packet);
@@ -372,6 +402,9 @@ namespace PacketMonitor
 
                 // Push pakcet to List<IPTrace>
                 UpdateListIPTrace(rawCapture);
+
+                if( this.Status == EnumStatus.OpenFile)
+                    mReadFileProgressBar.Increment( rawCapture.Data.Length );
             }
         }
 
@@ -679,8 +712,9 @@ namespace PacketMonitor
                 UpdateInfoBar();
 
                 //在讀pcap檔案模式下，指示出不再有新的封包，這部分也作為整個讀檔的結尾。
-                if (goBreak)
+                if (goBreak && this.Status == EnumStatus.OpenFile)
                 {
+                    mReadFileProgressBar.Value = mReadFileProgressBar.Maximum;
                     trdUpdateListUIAct = false;
                     PcapFileEOF = false;
                     Status = EnumStatus.Idle;
@@ -767,8 +801,8 @@ namespace PacketMonitor
 
                 Information = "Server IP : " + IP.certificate.ServerIP + "\r\n\r\n";
                 Information += "User   IP : " + IP.certificate.UserIP + "\r\n\r\n";
-                Information += "Server   Port : " + IP.certificate.ServerPort + "\r\n\r\n";
-                Information += "User   Port : " + IP.certificate.UserPort + "\r\n\r\n";
+                //Information += "Server   Port : " + IP.certificate.ServerPort + "\r\n\r\n";
+                //Information += "User   Port : " + IP.certificate.UserPort + "\r\n\r\n";
 
                 if (IP.certificate.Country.Count != 0)
                 {
