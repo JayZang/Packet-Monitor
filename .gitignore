@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+
+# Packets Folder
+.\PacketMonitor\bin\Debug\Packets
